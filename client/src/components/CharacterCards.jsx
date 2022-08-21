@@ -1,29 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { CHARACTER_URL } from "../constants"
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { getCharacters } from "../redux/actions/charactersActions";
 
-function CharacterCards() {
-    const [characters, setCharacters] = useState([]);
-
-    function getCharacters() {
-        return axios.get(CHARACTER_URL)
-            .then(characters => setCharacters(characters.data))
+function CharacterCards({ characters, getCharacters }) {
+    function getCharactersFunction() {
+        getCharacters();
     }
 
     useEffect(() => {
-        getCharacters()
-    }, [])
+        getCharactersFunction();
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <div>
             {characters.map((character) => {
-                return <div>
-                    <p>{character.name}</p>
-                    <img src={character.image} alt="characterImage" />
-                </div>
+                return (
+                    <div>
+                        <p>{character.name}</p>
+                        <img src={character.image} alt="characterImage" />
+                    </div>
+                );
             })}
         </div>
-    )
+    );
 }
 
-export default CharacterCards
+const mapStateToProps = (state) => {
+    return {
+        characters: state.characters,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCharacters: (character) => {
+            dispatch(getCharacters(character));
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterCards);
