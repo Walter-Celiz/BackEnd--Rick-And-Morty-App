@@ -29,3 +29,11 @@ module.exports = {
     Character,
     Episode,
 }
+
+/* 
+
+models --> se comunica con la base de datos
+rutas --> que son la puerta de entrada a nuesta api
+controller --> ser el intermediario entre nuestras rutas y nuestra base de datos
+
+*/ 
