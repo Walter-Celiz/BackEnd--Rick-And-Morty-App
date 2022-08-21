@@ -1,10 +1,9 @@
-
 // Sequelize init and relations
-const { Sequelize } = require('sequelize')
-const { dbUser, dbName, dbHost, dbPassword } = require('../utils/config')
+const { Sequelize } = require("sequelize");
+const { dbUser, dbName, dbHost, dbPassword } = require("../utils/config");
 
-const CharacterFactory = require('./Characters')
-const EpisodesFactory = require('./Episodes')
+const CharacterFactory = require("./Characters");
+const EpisodesFactory = require("./Episodes");
 
 //sequelize = new Sequelize(`postgres://${dbUser}:${dbPassword}@${dbHost}/${dbName}`)
 
@@ -16,19 +15,18 @@ const sequelize = new Sequelize(
     }
 );
 
-
-const Character = CharacterFactory(sequelize)
-const Episode = EpisodesFactory(sequelize)
+const Character = CharacterFactory(sequelize);
+const Episode = EpisodesFactory(sequelize);
 
 //relations
-Character.belongsToMany(Episode, { through: 'characters_episodes' })
-Episode.belongsToMany(Character, { through: 'characters_episodes' })
+Character.belongsToMany(Episode, { through: "characters_episodes" });
+Episode.belongsToMany(Character, { through: "characters_episodes" });
 
 module.exports = {
     conn: sequelize,
     Character,
     Episode,
-}
+};
 
 /* 
 
@@ -36,4 +34,4 @@ models --> se comunica con la base de datos
 rutas --> que son la puerta de entrada a nuesta api
 controller --> ser el intermediario entre nuestras rutas y nuestra base de datos
 
-*/ 
+*/
