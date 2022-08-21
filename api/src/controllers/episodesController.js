@@ -1,7 +1,7 @@
 const { Episode } = require("../models");
 
-const ModelCrud = require("./index")
+const ModelCrud = require("./index");
 
-const episodeController = new ModelCrud(Episode)
+const episodeController = new ModelCrud(Episode);
 
-module.exports = episodeController
+module.exports = episodeController;

@@ -4,10 +4,11 @@ const characterController = require("../controllers/charactersController");
 
 const router = Router();
 
-router.get("/:id", characterController.getCharacterById);
-router.get("/", characterController.getAllCharacters);
-router.post("/", characterController.addCharacter);
-router.put("/:id", characterController.updateCharacter);
-router.delete("/:id", characterController.deleteCharacter);
+router.get("/:id", characterController.getById);
+router.get("/", characterController.getAll);
+router.post("/", characterController.add);
+router.post("/:characterId/episode/:episodeId", characterController.addEpisodeToCharacter);
+router.put("/:id", characterController.update);
+router.delete("/:id", characterController.delete);
 
 module.exports = router;

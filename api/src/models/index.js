@@ -19,8 +19,8 @@ const Character = CharacterFactory(sequelize);
 const Episode = EpisodesFactory(sequelize);
 
 //relations
-Character.belongsToMany(Episode, { through: "characters_episodes" });
-Episode.belongsToMany(Character, { through: "characters_episodes" });
+Character.belongsToMany(Episode, { through: "characters_episodes", as: "episode" });
+Episode.belongsToMany(Character, { through: "characters_episodes", as: "episode" });
 
 module.exports = {
     conn: sequelize,

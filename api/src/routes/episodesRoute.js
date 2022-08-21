@@ -4,10 +4,10 @@ const episodeController = require("../controllers/episodesController");
 
 const router = Router();
 
-router.get("/:id", episodeController.getCharacterById);
-router.get("/", episodeController.getAllCharacters);
-router.post("/", episodeController.addCharacter);
-router.put("/:id", episodeController.updateCharacter);
-router.delete("/:id", episodeController.deleteCharacter);
+router.get("/:id", episodeController.getById);
+router.get("/", episodeController.getAll);
+router.post("/", episodeController.add);
+router.put("/:id", episodeController.update);
+router.delete("/:id", episodeController.delete);
 
 module.exports = router;
