@@ -1,14 +1,13 @@
 const { Router } = require("express");
 
+const episodeController = require("../controllers/episodesController");
+
 const router = Router();
 
-router.get("/", (req, res, next) => {
-    /* res.send("Soy la ruta Episodes"); */
-    try {
-        throw new Error("rompimos todo chango")
-    } catch (error) {
-        next(error)
-    }
-});
+router.get("/:id", episodeController.getCharacterById);
+router.get("/", episodeController.getAllCharacters);
+router.post("/", episodeController.addCharacter);
+router.put("/:id", episodeController.updateCharacter);
+router.delete("/:id", episodeController.deleteCharacter);
 
 module.exports = router;

@@ -13,6 +13,6 @@ const router = Router();
 
 //url
 router.use("/character", CharacterRoutes);
-router.use("/episodes", EpisodesRoutes);
+router.use("/episode", EpisodesRoutes);
 
 module.exports = router;

@@ -1,19 +1,13 @@
 const { Router } = require("express");
 
-const {
-    getAllCharacters,
-    getCharacterById,
-    addCharacter,
-    deleteCharacter,
-    updateCharacter,
-} = require("../controllers/charactersController");
+const characterController = require("../controllers/charactersController");
 
 const router = Router();
 
-router.get("/:id", getCharacterById);
-router.get("/", getAllCharacters);
-router.post("/", addCharacter);
-router.put("/:id", updateCharacter);
-router.delete("/:id", deleteCharacter);
+router.get("/:id", characterController.getCharacterById);
+router.get("/", characterController.getAllCharacters);
+router.post("/", characterController.addCharacter);
+router.put("/:id", characterController.updateCharacter);
+router.delete("/:id", characterController.deleteCharacter);
 
 module.exports = router;
