@@ -1,9 +1,10 @@
 const express = require("express");
 const morgan = require("morgan");
-const routes = require("./src/routes/index");
+const routes = require("./src/routes");
 const errorHandler = require("./src/utils/middlewares/errorHandler");
 const setHeaders = require("./src/utils/middlewares/setHeaders");
-const { PORT } = require("./src/utils/config/config");
+const { conn } = require("./src/models");
+const { PORT } = require("./src/utils/config");
 const app = express();
 
 // headers
@@ -22,6 +23,9 @@ app.use("/api", routes);
 app.use(errorHandler);
 
 // server.listen
-app.listen(PORT, () => {
-    console.log(`Server listening at port ${PORT}`);
+conn.sync({ force: true }).then(() => {
+    console.log("Database Connected");
+    app.listen(PORT, () => {
+        console.log(`Server listening at port ${PORT}`);
+    });
 });

@@ -5,8 +5,9 @@ route characters and route episodes
 
 const { Router } = require("express");
 
-const CharacterRoutes = require("./characters");
-const EpisodesRoutes = require("./episodes");
+//route definition
+const CharacterRoutes = require("./charactersRoute");
+const EpisodesRoutes = require("./episodesRoute");
 
 const router = Router();
 
